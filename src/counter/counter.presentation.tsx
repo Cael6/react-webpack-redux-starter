@@ -1,7 +1,18 @@
-import React, { PropTypes } from 'react';
+import * as React from 'react';
+import { PropTypes, Validator } from 'react';
 import AutobindComponent from 'autobind-component';
 
+interface CounterPropTypes {
+  value: Validator<any>;
+  onAdd: Validator<any>;
+  onAddSlowly: Validator<any>;
+  t: Validator<any>;
+}
+
 class Counter extends AutobindComponent {
+
+  static propTypes: CounterPropTypes;
+
   onAdd() {
     const { onAdd, value } = this.props;
 

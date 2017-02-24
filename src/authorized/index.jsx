@@ -1,5 +1,5 @@
 import AutobindComponent from 'autobind-component';
-import React from 'react';
+import * as React from 'react';
 import { Set } from 'immutable';
 import { selectCurrentRoles } from 'login-page/selectors';
 import { connect } from 'react-redux';

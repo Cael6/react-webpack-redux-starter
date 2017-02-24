@@ -1,19 +1,21 @@
-import React from 'react';
+import * as React from 'react';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore, HistoryUnsubscribe, DefaultSelectLocationState } from 'react-router-redux';
+import { History } from 'history';
+import { Store } from 'redux';
 import routes from './routes';
 import initStore from 'store';
 
 // just saving the reducer name for easy access
-export const REDUCER_NAME = 'routing';
+export const REDUCER_NAME: string = 'routing';
 
-const store = initStore();
+const store: Store<{}> = initStore();
 
 // this connects our history to our redux store
 // tracking any URL changes and allowing use the "push"
 // method through redux
-export const history = syncHistoryWithStore(browserHistory, store, {
+export const history: History & HistoryUnsubscribe = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: state => state.get(REDUCER_NAME)
 });
 

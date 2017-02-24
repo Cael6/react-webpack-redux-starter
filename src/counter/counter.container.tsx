@@ -4,7 +4,7 @@ import { countChanged, countChangedSlow  } from './actions';
 import Counter from './counter.presentation';
 
 const mapState = (state, props) => ({
-  value: selectValue(state, props)
+  value: selectValue(state)
 })
 
 const mapDispatch = {

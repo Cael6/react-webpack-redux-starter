@@ -1,4 +1,4 @@
-import reducer from './reducer.js';
+import reducer from './reducer';
 import { countChanged } from './actions';
 import { expect } from 'chai';
 import { fromJS } from 'immutable';

@@ -5,7 +5,7 @@ import { compose } from 'redux';
 
 const id = e => e;
 
-export default({ i18n, redux, auth }) => WrappedComponent => {
+export default({ i18n, redux, auth }): any => WrappedComponent => {
   const _translate = i18n ? translate(i18n) : id;
   const _connect = redux ? connect(redux.mapState, redux.mapDispatch) : id;
   const _authorized = auth ? authorized(auth) : id;

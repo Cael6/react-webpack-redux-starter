@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import autobind from 'react-autobind';
 import { shouldComponentUpdate }  from 'react-immutable-render-mixin';
 /*
@@ -16,7 +16,16 @@ import { shouldComponentUpdate }  from 'react-immutable-render-mixin';
   comparison functions to ensure that even complex objects, so long as they are
   Immutable, will be compared on VALUE not on REFERENCES
 */
-class AutobindComponent extends React.Component {
+
+interface AutoBindComponentDefaultProps {
+  t: (any) => any;
+}
+
+class AutobindComponent extends React.Component<any, any> {
+  static defaultProps: AutoBindComponentDefaultProps;
+  
+  shouldComponentUpdate: boolean;
+
   constructor(props) {
     super(props);
     autobind(this);

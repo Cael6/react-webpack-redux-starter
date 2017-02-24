@@ -1,6 +1,7 @@
 import App from 'app';
 import loginRoute from 'login-page/route';
 import counterRoute from 'counter/route';
+import { Store } from 'redux';
 
 /*
   Configuration of our routes. We've opted to stick routing for individual sub-routes
@@ -12,7 +13,7 @@ import counterRoute from 'counter/route';
   define their routes asyncronously. Go take a look at the Counter route code
   for more information.
 */
-export default (store) => ({
+export default (store: Store<{}>) => ({
   path: '/',
   component: App,
   indexRoute: { onEnter: (nextState, replace) => replace('/counter') },
