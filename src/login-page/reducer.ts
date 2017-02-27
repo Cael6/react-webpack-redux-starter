@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { fromJS } from 'immutable';
-import { LOGIN_SUCCESS } from './actions';
+import { LoginStatus } from './actions';
 
 const defaultState = fromJS({
   user: {
@@ -24,5 +24,5 @@ export const REDUCER_NAME = 'auth';
   If you wish to do any of those things, they should occur in an action.
 */
 export default handleActions({
-  [LOGIN_SUCCESS]: (state, action) => state.set('user', action.payload)
+  [LoginStatus.LOGIN_SUCCESS]: (state, action) => state.set('user', action.payload)
 }, defaultState);

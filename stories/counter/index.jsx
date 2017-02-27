@@ -8,7 +8,7 @@ export default stories => (
     .add('Counter', () => {
     	return (
     		<Counter
-          value={ number('Value', 10) }
+          value={ number('Value', 20) }
           onAdd={ action('on add') }
           onAddSlowly={ action('on add slowly') }
           t={ e => e }

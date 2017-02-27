@@ -16,6 +16,6 @@ import { createSelector } from 'reselect';
 export const selectCurrentUser = (state) => state.getIn([REDUCER_NAME, 'user'], Map());
 
 export const selectCurrentRoles = createSelector(
-  [selectCurrentUser],
+  selectCurrentUser,
   (user) => user.get('roles', List())
 )

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import * as React from 'react';
+import { PropTypes } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from 'i18n-config';
 
@@ -6,7 +7,12 @@ import i18n from 'i18n-config';
   This is a simple wrapper around the application which defines elements common
   to the application.
 */
-const App = ({ children }) => {
+
+interface IAppProps {
+  children: React.Requireable<any>
+}
+
+const App = ({ children }:IAppProps):React.ReactElement<{}> => {
   return (
     <I18nextProvider i18n={ i18n }>
       <div>
@@ -16,10 +22,6 @@ const App = ({ children }) => {
       </div>
     </I18nextProvider>
   );
-}
-
-App.propTypes = {
-  children: PropTypes.node
 }
 
 export default App;

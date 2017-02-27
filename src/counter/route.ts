@@ -1,4 +1,5 @@
-import { injectAsyncReducer } from 'store';
+import { injectAsyncReducer, AsyncReducerStore } from 'store';
+import { CounterState } from './state';
 
 /*
   Here we define the counter route. In contrast from the default App route,
@@ -10,11 +11,11 @@ import { injectAsyncReducer } from 'store';
   We also asyncronously load our reducer in order to allow any API specific
   code to be split out as well.
 */
-export default (store) => ({
+export default (store: AsyncReducerStore<CounterState>) => ({
   path: 'counter',
-  getComponent: (nextState, cb) => require.ensure([], require => {
-    const Counter = require('./counter.container').default;
-    const reducer = require('./reducer');
+  getComponent: (nextState, cb: Function): void => require.ensure([], require => {
+    const Counter = (require('./counter.container') as any).default;
+    const reducer: any = require('./reducer');
 
     injectAsyncReducer(store, reducer.REDUCER_NAME, reducer.default);
     cb(null, Counter);
