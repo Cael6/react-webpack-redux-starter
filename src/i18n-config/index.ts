@@ -15,7 +15,7 @@ import i18next from 'i18next';
   Take a look at the counter for an example.
 **/
 export default i18next.init({
-  lng: 'fr',
+  lng: 'en',
   resources: {
     en: {
       translation: {
