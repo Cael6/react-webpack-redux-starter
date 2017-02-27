@@ -15,9 +15,10 @@ export default (roles = []) => (WrappedComponent) => {
     console.warn(`Defined an authorized component without roles. No access will be allowed in ${wrappedDisplayName}`);
   }
 
-  class AuthWrapped extends AutobindComponent {
+  class AuthWrapped extends AutobindComponent<any, any> {
 
     static redirectTo = '/login';
+    static displayName = WrappedComponent.displayName;
 
     componentWillMount() {
       const isAuthorized = this.isAuthorized();
@@ -30,7 +31,7 @@ export default (roles = []) => (WrappedComponent) => {
     }
 
     onAuthFailedRedirect() {
-      const { redirectTo, displayName, name } = this.constructor;
+      const { redirectTo, displayName, name } = AuthWrapped;
       const { router } = this.props;
 
       if(!router) {
@@ -49,7 +50,7 @@ export default (roles = []) => (WrappedComponent) => {
         return false;
       }
 
-      const finalRequiredRoles = Set.isSet(roles) ? roles : Set(roles);
+      const finalRequiredRoles = Set.isSet(roles) ? roles as any : Set(roles);
       const finalCurrentRoles = Set.isSet(currentRoles) ? currentRoles : Set(currentRoles);
 
       return finalRequiredRoles.intersect(finalCurrentRoles).size > 0;

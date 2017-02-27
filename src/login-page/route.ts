@@ -1,7 +1,7 @@
 import Login from './login-page.container';
-import { Store } from 'redux';
+import { AsyncReducerStore } from 'store';
 
-export default (store: Store<{}>) => ({
+export default (store: AsyncReducerStore<any>) => ({
   path: 'login',
   component: Login
 });

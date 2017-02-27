@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PropTypes, Validator } from 'react';
 import AutobindComponent from 'autobind-component';
+import { CounterState } from './state';
 
 interface CounterPropTypes {
   value: Validator<any>;
@@ -9,7 +10,7 @@ interface CounterPropTypes {
   t: Validator<any>;
 }
 
-class Counter extends AutobindComponent {
+class Counter extends AutobindComponent<any, CounterState> {
 
   static propTypes: CounterPropTypes;
 

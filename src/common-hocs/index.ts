@@ -5,7 +5,13 @@ import { compose } from 'redux';
 
 const id = e => e;
 
-export default({ i18n, redux, auth }): any => WrappedComponent => {
+interface IHOC {
+  i18n: string[],
+  redux: any,
+  auth: string[]
+}
+
+export default({ i18n, redux, auth }: IHOC) => WrappedComponent => {
   const _translate = i18n ? translate(i18n) : id;
   const _connect = redux ? connect(redux.mapState, redux.mapDispatch) : id;
   const _authorized = auth ? authorized(auth) : id;

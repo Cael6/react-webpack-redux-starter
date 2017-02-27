@@ -8,11 +8,11 @@ import i18n from 'i18n-config';
   to the application.
 */
 
-interface IApp {
+interface IAppProps {
   children: React.Requireable<any>
 }
 
-const App = ({ children }:IApp):React.ReactElement<{}> => {
+const App = ({ children }:IAppProps):React.ReactElement<{}> => {
   return (
     <I18nextProvider i18n={ i18n }>
       <div>

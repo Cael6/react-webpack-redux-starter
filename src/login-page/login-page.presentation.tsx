@@ -1,14 +1,24 @@
-import React, { PropTypes } from 'react';
+import * as React from 'react';
+import { PropTypes, Validator } from 'react'
 import { fromJS } from 'immutable';
 import FacebookLogin from 'react-facebook-login';
 import AutobindComponent from 'autobind-component';
+import { InjectedRouter } from 'react-router';
 
 // @TODO: There is a timing issue with FacebookLogin that
 // throws setState() after unmount warning; but it doesn't effect
 // the application in any real way. Should be fixed at some
 // point.
 
-class LoginPage extends AutobindComponent {
+interface ILoginPageProps {
+  appId: string,
+  loginSuccess: Function,
+  loginFailed: Function,
+  router: InjectedRouter
+}
+
+class LoginPage extends AutobindComponent<ILoginPageProps, any> {
+  static propTypes: React.ValidationMap<ILoginPageProps>;
   onLoginDone(res) {
     const { loginSuccess, loginFailed, router } = this.props;
 

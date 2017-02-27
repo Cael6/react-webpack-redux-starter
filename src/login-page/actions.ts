@@ -17,6 +17,10 @@ import { createActions } from 'redux-actions';
   If you need to perform an async action in a action, check out counter/actions.
 */
 
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILED = 'LOGIN_FAILED';
-export const { loginSuccess, loginFailed } = createActions(LOGIN_SUCCESS, LOGIN_FAILED);
+type LoginStatusEnums = "LOGIN_SUCCESS" | "LOGIN_FAILED";
+export const LoginStatus = {
+    LOGIN_SUCCESS: "LOGIN_SUCCESS" as LoginStatusEnums,
+    LOGIN_FAILED: "LOGIN_FAILED" as LoginStatusEnums
+};
+
+export const { loginSuccess, loginFailed } = createActions(LoginStatus.LOGIN_SUCCESS, LoginStatus.LOGIN_FAILED);

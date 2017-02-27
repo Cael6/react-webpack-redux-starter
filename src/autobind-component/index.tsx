@@ -1,5 +1,5 @@
 import * as React from 'react';
-import autobind from 'react-autobind';
+import autobind from 'class-autobind';
 import { shouldComponentUpdate }  from 'react-immutable-render-mixin';
 /*
   Simple helper component which will autobind all functions on a component
@@ -17,16 +17,11 @@ import { shouldComponentUpdate }  from 'react-immutable-render-mixin';
   Immutable, will be compared on VALUE not on REFERENCES
 */
 
-interface AutoBindComponentDefaultProps {
-  t: (any) => any;
-}
+class AutobindComponent<P, S> extends React.Component<P, S> {
+  static defaultProps: any;
+  shouldComponentUpdate: any;
 
-class AutobindComponent extends React.Component<any, any> {
-  static defaultProps: AutoBindComponentDefaultProps;
-  
-  shouldComponentUpdate: boolean;
-
-  constructor(props) {
+  constructor(props: P) {
     super(props);
     autobind(this);
     this.shouldComponentUpdate = shouldComponentUpdate.bind(this);

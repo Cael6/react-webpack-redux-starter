@@ -1,6 +1,5 @@
-import { injectAsyncReducer } from 'store';
-
-import { Store } from 'redux';
+import { injectAsyncReducer, AsyncReducerStore } from 'store';
+import { CounterState } from './state';
 
 /*
   Here we define the counter route. In contrast from the default App route,
@@ -12,9 +11,9 @@ import { Store } from 'redux';
   We also asyncronously load our reducer in order to allow any API specific
   code to be split out as well.
 */
-export default (store: Store<any>) => ({
+export default (store: AsyncReducerStore<CounterState>) => ({
   path: 'counter',
-  getComponent: (nextState, cb) => require.ensure([], require => {
+  getComponent: (nextState, cb: Function): void => require.ensure([], require => {
     const Counter = (require('./counter.container') as any).default;
     const reducer: any = require('./reducer');
 
